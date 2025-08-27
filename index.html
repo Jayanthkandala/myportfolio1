@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jayanth Kumar Naidu Kandala - Multi-Cloud DevOps Engineer</title>
+    <meta name="description" content="Multi-Cloud DevOps Engineer specializing in AWS, Azure, GCP, Kubernetes, and CI/CD pipelines">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="#home">JK</a>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#admin" class="nav-link admin-link" id="admin-nav-link"><i class="fas fa-user-shield"></i> Admin</a></li>
+            </ul>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Admin Login Modal -->
+    <div class="modal hidden" id="admin-modal">
+        <div class="modal-overlay" id="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-shield-alt"></i> Admin Access</h3>
+                <button class="modal-close" id="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="admin-login-form" class="admin-form">
+                    <div class="form-group">
+                        <label for="admin-password" class="form-label">
+                            <i class="fas fa-lock"></i> Admin Password
+                        </label>
+                        <input 
+                            type="password" 
+                            id="admin-password" 
+                            name="password" 
+                            class="form-control" 
+                            placeholder="Enter admin password"
+                            required 
+                            autocomplete="current-password"
+                        >
+                        <div class="password-hint">
+                            <small><i class="fas fa-info-circle"></i> Enter the admin password to access portfolio management</small>
+                        </div>
+                        <span class="error-message" id="password-error"></span>
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--full-width">
+                        <i class="fas fa-sign-in-alt"></i> Access Admin Console
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- EXACT Admin Console -->
+    <div class="admin-console-container hidden" id="admin-console">
+        <!-- Admin Console Header -->
+        <div class="admin-console-header">
+            <div class="admin-header-left">
+                <h1>Admin Console</h1>
+            </div>
+            <div class="admin-header-right">
+                <button class="admin-btn admin-btn--secondary" id="preview-site-btn">
+                    <i class="fas fa-eye"></i> Preview Site
+                </button>
+                <button class="admin-btn admin-btn--primary" id="logout-console-btn">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </div>
+
+        <div class="admin-console-body">
+            <!-- Left Sidebar -->
+            <div class="admin-sidebar">
+                <nav class="admin-nav">
+                    <ul class="admin-nav-list">
+                        <li><a href="#dashboard" class="admin-nav-link active" data-page="dashboard">
+                            <i class="fas fa-tachometer-alt"></i> Dashboard
+                        </a></li>
+                        <li><a href="#projects" class="admin-nav-link" data-page="projects">
+                            <i class="fas fa-folder"></i> Projects
+                        </a></li>
+                        <li><a href="#contacts" class="admin-nav-link" data-page="contacts">
+                            <i class="fas fa-envelope"></i> Contacts
+                        </a></li>
+                        <li><a href="#skills" class="admin-nav-link" data-page="skills">
+                            <i class="fas fa-cogs"></i> Skills
+                        </a></li>
+                        <li><a href="#content" class="admin-nav-link" data-page="content">
+                            <i class="fas fa-edit"></i> Content
+                        </a></li>
+                        <li><a href="#screenshots" class="admin-nav-link" data-page="screenshots">
+                            <i class="fas fa-camera"></i> Screenshots
+                        </a></li>
+                        <li><a href="#settings" class="admin-nav-link" data-page="settings">
+                            <i class="fas fa-sliders-h"></i> Settings
+                        </a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="admin-main-content">
+                <!-- Dashboard Page -->
+                <div class="admin-page active" id="dashboard-page">
+                    <h2 class="page-title">Dashboard Overview</h2>
+                    
+                    <!-- Metrics Cards -->
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-icon">
+                                <i class="fas fa-folder"></i>
+                            </div>
+                            <div class="metric-content">
+                                <div class="metric-number">3</div>
+                                <div class="metric-label">Total Projects</div>
+                            </div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="metric-content">
+                                <div class="metric-number">0</div>
+                                <div class="metric-label">Contact Messages</div>
+                            </div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-icon">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <div class="metric-content">
+                                <div class="metric-number">6</div>
+                                <div class="metric-label">Skill Categories</div>
+                            </div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-icon">
+                                <i class="fas fa-camera"></i>
+                            </div>
+                            <div class="metric-content">
+                                <div class="metric-number">0</div>
+                                <div class="metric-label">Screenshots</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity -->
+                    <div class="activity-section">
+                        <h3>Recent Activity</h3>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-rocket"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-text">Portfolio initialized</div>
+                                    <div class="activity-time">Just now</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projects Page -->
+                <div class="admin-page" id="projects-page">
+                    <h2 class="page-title">Projects Management</h2>
+                    <div class="projects-admin-grid">
+                        <div class="project-admin-card">
+                            <h4>AWS Cloud Infrastructure</h4>
+                            <p>Automated secure multi-tier AWS architecture using Terraform</p>
+                            <div class="project-admin-actions">
+                                <button class="admin-btn admin-btn--sm">Edit</button>
+                                <button class="admin-btn admin-btn--sm admin-btn--secondary">Upload Image</button>
+                            </div>
+                        </div>
+                        <div class="project-admin-card">
+                            <h4>DevOps CI/CD Pipeline</h4>
+                            <p>End-to-end CI/CD pipeline with automated testing</p>
+                            <div class="project-admin-actions">
+                                <button class="admin-btn admin-btn--sm">Edit</button>
+                                <button class="admin-btn admin-btn--sm admin-btn--secondary">Upload Image</button>
+                            </div>
+                        </div>
+                        <div class="project-admin-card">
+                            <h4>Kubernetes EKS Deployment</h4>
+                            <p>Deployed and scaled app on Amazon EKS with Helm</p>
+                            <div class="project-admin-actions">
+                                <button class="admin-btn admin-btn--sm">Edit</button>
+                                <button class="admin-btn admin-btn--sm admin-btn--secondary">Upload Image</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contacts Page -->
+                <div class="admin-page" id="contacts-page">
+                    <h2 class="page-title">Contact Messages</h2>
+                    <div class="empty-state">
+                        <i class="fas fa-inbox"></i>
+                        <p>No contact messages yet</p>
+                        <small>Messages from your contact form will appear here</small>
+                    </div>
+                </div>
+
+                <!-- Skills Page -->
+                <div class="admin-page" id="skills-page">
+                    <h2 class="page-title">Skills Management</h2>
+                    <div class="skills-admin-categories">
+                        <div class="skill-category-admin">
+                            <h4>Cloud Platforms</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag-admin">AWS (85%)</span>
+                                <span class="skill-tag-admin">Azure (75%)</span>
+                                <span class="skill-tag-admin">Google Cloud (70%)</span>
+                            </div>
+                        </div>
+                        <div class="skill-category-admin">
+                            <h4>DevOps Tools</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag-admin">Docker (90%)</span>
+                                <span class="skill-tag-admin">Kubernetes (85%)</span>
+                                <span class="skill-tag-admin">Jenkins (90%)</span>
+                                <span class="skill-tag-admin">Terraform (85%)</span>
+                            </div>
+                        </div>
+                        <div class="skill-category-admin">
+                            <h4>Programming & Scripting</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag-admin">Python (85%)</span>
+                                <span class="skill-tag-admin">Bash (80%)</span>
+                                <span class="skill-tag-admin">YAML (90%)</span>
+                            </div>
+                        </div>
+                        <div class="skill-category-admin">
+                            <h4>Monitoring & Version Control</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag-admin">Prometheus (80%)</span>
+                                <span class="skill-tag-admin">Grafana (85%)</span>
+                                <span class="skill-tag-admin">Git (95%)</span>
+                                <span class="skill-tag-admin">GitHub (90%)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content Page -->
+                <div class="admin-page" id="content-page">
+                    <h2 class="page-title">Content Management</h2>
+                    <div class="content-sections">
+                        <div class="content-section-admin">
+                            <h4>Personal Information</h4>
+                            <form class="admin-form">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label class="form-label">Name</label>
+                                        <input type="text" class="form-control" value="Jayanth Kumar Naidu Kandala">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Title</label>
+                                        <input type="text" class="form-control" value="Multi-Cloud DevOps Engineer">
+                                    </div>
+                                </div>
+                                <button type="submit" class="admin-btn admin-btn--primary">Save Changes</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Screenshots Page -->
+                <div class="admin-page" id="screenshots-page">
+                    <h2 class="page-title">Screenshots Management</h2>
+                    <div class="empty-state">
+                        <i class="fas fa-images"></i>
+                        <p>No screenshots uploaded</p>
+                        <button class="admin-btn admin-btn--primary">Upload Screenshots</button>
+                    </div>
+                </div>
+
+                <!-- Settings Page -->
+                <div class="admin-page" id="settings-page">
+                    <h2 class="page-title">Settings</h2>
+                    <div class="settings-sections">
+                        <div class="settings-section">
+                            <h4>General Settings</h4>
+                            <form class="admin-form">
+                                <div class="form-group">
+                                    <label class="form-label">Theme</label>
+                                    <select class="form-control">
+                                        <option value="light">Light</option>
+                                        <option value="dark">Dark</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="admin-btn admin-btn--primary">Save Settings</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portfolio Section -->
+    <div class="portfolio-container" id="portfolio-container">
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="status-badge">
+                        <span class="status-dot"></span>
+                        Available for Opportunities
+                    </div>
+                    <h1 class="hero-title">
+                        Hi, I'm <span class="highlight">Jayanth Kumar Naidu Kandala</span>
+                    </h1>
+                    <h2 class="hero-subtitle">Multi-Cloud DevOps Engineer</h2>
+                    <p class="hero-description">
+                        Multi-Cloud DevOps Engineer with hands-on expertise in AWS, Azure, and GCP. 
+                        Skilled in Kubernetes, CI/CD pipelines, and Infrastructure as Code, with a passion 
+                        for designing scalable, automated, and secure DevOps solutions.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn btn--primary">Get In Touch</a>
+                        <a href="#projects" class="btn btn--secondary">View Projects</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>
+                            As a passionate Multi-Cloud DevOps Engineer, I bring innovation and efficiency to cloud infrastructure. 
+                            My journey combines cutting-edge technology with practical solutions, creating systems that scale 
+                            effortlessly and operate reliably in today's dynamic digital landscape.
+                        </p>
+                        <p>
+                            I specialize in architecting robust CI/CD pipelines, orchestrating containerized applications with 
+                            Kubernetes, and implementing Infrastructure as Code practices. My expertise spans across AWS, Azure, 
+                            and GCP, enabling seamless multi-cloud strategies.
+                        </p>
+                        <div class="achievements">
+                            <div class="achievement">
+                                <strong>GDSC Executive Team Member</strong> - Organized DevOps workshops and technical sessions
+                            </div>
+                            <div class="achievement">
+                                <strong>IEEE Computer Society Student Chapter Chair</strong> - Led technical initiatives and competitive events
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section with Horizontal Layout -->
+        <section id="skills" class="section section-alt">
+            <div class="container">
+                <h2 class="section-title">Skills & Expertise</h2>
+                <p class="skills-intro">Comprehensive technical expertise across multi-cloud platforms, DevOps automation, and modern development practices.</p>
+                
+                <!-- Horizontal Skills Layout -->
+                <div class="skills-horizontal">
+                    <!-- Cloud Platforms Row -->
+                    <div class="skill-category">
+                        <h3 class="category-title">Cloud Platforms</h3>
+                        <div class="skills-row">
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <i class="fab fa-aws skill-icon"></i>
+                                    <span class="skill-name">AWS</span>
+                                    <span class="skill-level">85%</span>
+                                </div>
+                                <div class="skill-progress-bar">
+                                    <div class="skill-progress" data-width="85"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <i class="fab fa-microsoft skill-icon"></i>
+                                    <span class="skill-name">Azure</span>
+                                    <span class="skill-level">75%</span>
+                                </div>
+                                <div class="skill-progress-bar">
+                                    <div class="skill-progress" data-width="75"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <i class="fab fa-google skill-icon"></i>
+                                    <span class="skill-name">Google Cloud</span>
+                                    <span class="skill-level">70%</span>
+                                </div>
+                                <div class="skill-progress-bar">
+                                    <div class="skill-progress" data-width="70"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DevOps Tools Row -->
+                    <div class="skill-category">
+                        <h3 class="category-title">DevOps Tools</h3>
+                        <div class="skills-row">
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <i class="fab fa-docker skill-icon"></i>
+                                    <span class="skill-name">Docker</span>
+                                    <span class="skill-level">90%</span>
+                                </div>
+                                <div class="skill-progress-bar">
+                                    <div class="skill-progress" data-width="90"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <i class="fas fa-dharmachakra skill-icon"></i>
+                                    <span class="skill-name">Kubernetes</span>
+                                    <span class="skill-level">85%</span>
+                                </div>
+                                <div class="skill-progress-bar">
+                                    <div class="skill-progress" data-width="85"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <i class="fas fa-tools skill-icon"></i>
+                                    <span class="skill-name">Jenkins</span>
+                                    <span class="skill-level">90%</span>
+                                </div>
+                                <div class="skill-progress-bar">
+                                    <div class="skill-progress" data-width="90"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <i class="fas fa-cube skill-icon"></i>
+                                    <span class="skill-name">Terraform</span>
+                                    <span class="skill-level">85%</span>
+                                </div>
+                                <div class="skill-progress-bar">
+                                    <div class="skill-progress" data-width="85"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Programming & Scripting Row -->
+                    <div class="skill-category">
+                        <h3 class="category-title">Programming & Scripting</h3>
+                        <div class="skills-row">
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <i class="fab fa-python skill-icon"></i>
+                                    <span class="skill-name">Python</span>
+                                    <span class="skill-level">85%</span>
+                                </div>
+                                <div class="skill-progress-bar">
+                                    <div class="skill-progress" data-width="85"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <i class="fas fa-terminal skill-icon"></i>
+                                    <span class="skill-name">Bash</span>
+                                    <span class="skill-level">80%</span>
+                                </div>
+                                <div class="skill-progress-bar">
+                                    <div class="skill-progress" data-width="80"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <i class="fas fa-code skill-icon"></i>
+                                    <span class="skill-name">YAML</span>
+                                    <span class="skill-level">90%</span>
+                                </div>
+                                <div class="skill-progress-bar">
+                                    <div class="skill-progress" data-width="90"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Monitoring & Version Control Row -->
+                    <div class="skill-category">
+                        <h3 class="category-title">Monitoring & Version Control</h3>
+                        <div class="skills-row">
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <i class="fas fa-chart-line skill-icon"></i>
+                                    <span class="skill-name">Prometheus</span>
+                                    <span class="skill-level">80%</span>
+                                </div>
+                                <div class="skill-progress-bar">
+                                    <div class="skill-progress" data-width="80"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <i class="fas fa-chart-bar skill-icon"></i>
+                                    <span class="skill-name">Grafana</span>
+                                    <span class="skill-level">85%</span>
+                                </div>
+                                <div class="skill-progress-bar">
+                                    <div class="skill-progress" data-width="85"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <i class="fab fa-git-alt skill-icon"></i>
+                                    <span class="skill-name">Git</span>
+                                    <span class="skill-level">95%</span>
+                                </div>
+                                <div class="skill-progress-bar">
+                                    <div class="skill-progress" data-width="95"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <i class="fab fa-github skill-icon"></i>
+                                    <span class="skill-name">GitHub</span>
+                                    <span class="skill-level">90%</span>
+                                </div>
+                                <div class="skill-progress-bar">
+                                    <div class="skill-progress" data-width="90"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section">
+            <div class="container">
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-icon">☁️</div>
+                        <h3 class="project-title">AWS Cloud Infrastructure Deployment</h3>
+                        <p class="project-description">
+                            Automated a secure multi-tier AWS architecture using Terraform with GitHub version control. 
+                            Ensured scalability and high availability with Auto Scaling Groups and Elastic Load Balancer.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">AWS</span>
+                            <span class="tech-tag">Terraform</span>
+                            <span class="tech-tag">GitHub</span>
+                            <span class="tech-tag">CloudWatch</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-icon">🔄</div>
+                        <h3 class="project-title">DevOps CI/CD Pipeline with AWS Deployment</h3>
+                        <p class="project-description">
+                            Built an end-to-end CI/CD pipeline for a Java web app with automated build, testing, 
+                            provisioning, and deployment. Reduced deployment time by 70%.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Jenkins</span>
+                            <span class="tech-tag">Maven</span>
+                            <span class="tech-tag">Ansible</span>
+                            <span class="tech-tag">Prometheus</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-icon">⚙️</div>
+                        <h3 class="project-title">Kubernetes Deployment on AWS EKS</h3>
+                        <p class="project-description">
+                            Deployed and scaled the 2048 Game app on Amazon EKS using Helm and Ingress, 
+                            enabling external access via ALB with DNS verification.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">EKS</span>
+                            <span class="tech-tag">Kubernetes</span>
+                            <span class="tech-tag">Helm</span>
+                            <span class="tech-tag">ALB</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education & Certifications -->
+        <section id="education" class="section section-alt">
+            <div class="container">
+                <h2 class="section-title">Education & Certifications</h2>
+                <div class="education-grid">
+                    <div class="education-card">
+                        <div class="education-header">
+                            <h3>Education</h3>
+                            <div class="education-icon">🎓</div>
+                        </div>
+                        <div class="education-content">
+                            <h4>B.Tech, Computer Science & Engineering (Data Science)</h4>
+                            <p class="institution">Sri Venkateswara College of Engineering, Tirupati</p>
+                            <div class="education-details">
+                                <span class="duration">2021 – 2025</span>
+                                <span class="cgpa">CGPA: 7.50</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="certifications-card">
+                        <div class="certifications-header">
+                            <h3>Certifications</h3>
+                            <div class="certifications-icon">🏆</div>
+                        </div>
+                        <div class="certifications-list">
+                            <div class="cert-item">
+                                <span class="cert-name">AWS Simu Learn Cloud Practitioner</span>
+                            </div>
+                            <div class="cert-item">
+                                <span class="cert-name">AWS Educate Cloud Computing 101 Badge</span>
+                            </div>
+                            <div class="cert-item">
+                                <span class="cert-name">Python Programming (NPTEL)</span>
+                            </div>
+                            <div class="cert-item">
+                                <span class="cert-name">Python Basics for Data Science, Introduction to SQL (EDX)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="container">
+                <h2 class="section-title">Let's Connect</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Get In Touch</h3>
+                        <p>
+                            Ready to discuss innovative DevOps solutions or exciting opportunities? 
+                            I'm always eager to connect and explore new challenges.
+                        </p>
+                        
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <div class="contact-icon">📧</div>
+                                <div class="contact-info-text">
+                                    <span class="contact-label">Email</span>
+                                    <a href="mailto:kandalajayanth401@gmail.com">kandalajayanth401@gmail.com</a>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">📱</div>
+                                <div class="contact-info-text">
+                                    <span class="contact-label">Phone</span>
+                                    <a href="tel:+917093459097">+91 7093459097</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Full Name *</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email Address *</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Subject *</label>
+                            <select id="subject" name="subject" class="form-control" required>
+                                <option value="">Select a topic</option>
+                                <option value="job-opportunity">Job Opportunity</option>
+                                <option value="collaboration">Collaboration</option>
+                                <option value="consultation">Technical Consultation</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label">Message *</label>
+                            <textarea id="message" name="message" class="form-control" rows="5" required 
+                                      placeholder="Tell me about your project or opportunity..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn--primary btn--full-width">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h4>Jayanth Kumar Naidu Kandala</h4>
+                        <p>Multi-Cloud DevOps Engineer passionate about creating scalable, automated, and secure cloud solutions.</p>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4>Quick Links</h4>
+                        <div class="footer-links">
+                            <a href="#home">Home</a>
+                            <a href="#about">About</a>
+                            <a href="#skills">Skills</a>
+                            <a href="#projects">Projects</a>
+                            <a href="#education">Education</a>
+                            <a href="#contact">Contact</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-bottom">
+                    <p>&copy; 2025 Jayanth Kumar Naidu Kandala. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" style="display: none;">
+        ↑
+    </button>
+
+    <script src="app.js"></script>
+</body>
+</html>
